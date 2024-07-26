@@ -9,4 +9,10 @@
     <string name="description_logo">Little Lemon Logo</string>
     <string name="profile_button_logout">Log Out</string>
     <string name="onboarding_button_register">Register</string>
+    <string name="menu_url">https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Working-With-Data-API/main/menu.json</string>
+    <string name="home_title">Little Lemon</string>
+    <string name="home_subtitle">Chicago</string>
+    <string name="home_description_1">We are a family-owned Mediterranean</string>
+    <string name="home_description_2">restaurant focused on traditional recipes</string>
+    <string name="home_description_3">served with a modern twist.</string>
 </resources>
