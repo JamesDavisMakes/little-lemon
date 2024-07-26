@@ -41,9 +41,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             LittleLemonTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    LittleLemonNavigation(innerPadding, database)
-                }
+                LittleLemonNavigation(database)
             }
         }
 

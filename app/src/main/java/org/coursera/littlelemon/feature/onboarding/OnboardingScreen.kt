@@ -52,12 +52,6 @@ fun OnboardingScreen(
             R.drawable.branding_logo_horizontal_text_transparent
         }
 
-        Image(painter = painterResource(id = logoRes),
-              contentDescription = stringResource(R.string.description_logo),
-              modifier = Modifier
-                  .fillMaxWidth(0.6f)
-                  .padding(30.dp)
-        )
         Text(text = stringResource(R.string.onboarding_header),
              textAlign = TextAlign.Center,
              style = MaterialTheme.typography.headlineMedium,
@@ -129,9 +123,7 @@ fun OnboardingScreen(
 @Composable
 private fun OnboardingScreenPreview() {
     LittleLemonTheme {
-        Scaffold(modifier = Modifier.fillMaxSize()) { _ ->
-            OnboardingScreen { f, l, e -> }
-        }
+        OnboardingScreen { f, l, e -> }
     }
 }
 
@@ -140,8 +132,6 @@ private fun OnboardingScreenPreview() {
 @Composable
 private fun OnboardingScreenPreviewDark() {
     LittleLemonTheme {
-        Scaffold(modifier = Modifier.fillMaxSize()) { _ ->
-            OnboardingScreen { f, l, e -> }
-        }
+        OnboardingScreen { f, l, e -> }
     }
 }

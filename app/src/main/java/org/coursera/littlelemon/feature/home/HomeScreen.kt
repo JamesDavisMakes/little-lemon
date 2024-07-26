@@ -16,6 +16,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SearchBar
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -37,66 +38,65 @@ import org.coursera.littlelemon.ui.theme.LittleLemonTheme
 import org.coursera.littlelemon.ui.theme.backgroundLight
 
 @Composable
-fun HomeScreen(menuItems: List<MenuItem>, onProfileOpen: () -> Unit) {
-    Surface(modifier = Modifier
-        .fillMaxWidth()
-        .height(400.dp))
-    {
-        Image(painter = painterResource(id = R.drawable.home_header_background),
-              contentDescription = "",
-              contentScale = ContentScale.Crop,
-              modifier = Modifier
-                  .fillMaxSize()
-                  .blur(4.dp))
-        Column(modifier = Modifier.padding(10.dp)) {
-            Text(text = stringResource(R.string.home_title),
-                 style = MaterialTheme.typography.displayMedium,
-                 color = MaterialTheme.colorScheme.primary,
-                 fontWeight = FontWeight.Bold,
-                 fontFamily = FontFamily.Serif,
-                 modifier = Modifier
-                     .background(MaterialTheme.colorScheme.tertiary)
-                     .padding(5.dp)
-            )
-            Text(text = stringResource(R.string.home_subtitle),
-                 style = MaterialTheme.typography.displaySmall,
-                 color = MaterialTheme.colorScheme.onTertiary,
-                 fontFamily = FontFamily.Serif,
-                 modifier = Modifier
-                     .background(MaterialTheme.colorScheme.tertiary)
-                     .padding(5.dp))
+fun HomeScreen(menuItems: List<MenuItem>) {
+    Scaffold { padding ->
+        Surface(modifier = Modifier
+            .fillMaxWidth()
+            .height(400.dp)) {
+            Image(painter = painterResource(id = R.drawable.home_header_background),
+                  contentDescription = "",
+                  contentScale = ContentScale.Crop,
+                  modifier = Modifier
+                      .fillMaxSize()
+                      .blur(4.dp))
+            Column(modifier = Modifier.padding(10.dp)) {
+                Text(text = stringResource(R.string.home_title),
+                     style = MaterialTheme.typography.displayMedium,
+                     color = MaterialTheme.colorScheme.primary,
+                     fontWeight = FontWeight.Bold,
+                     fontFamily = FontFamily.Serif,
+                     modifier = Modifier
+                         .background(MaterialTheme.colorScheme.tertiary)
+                         .padding(5.dp)
+                )
+                Text(text = stringResource(R.string.home_subtitle),
+                     style = MaterialTheme.typography.displaySmall,
+                     color = MaterialTheme.colorScheme.onTertiary,
+                     fontFamily = FontFamily.Serif,
+                     modifier = Modifier
+                         .background(MaterialTheme.colorScheme.tertiary)
+                         .padding(5.dp))
 
-            Column(verticalArrangement = Arrangement.Bottom, modifier = Modifier.fillMaxSize()){
-                Text(text = stringResource(R.string.home_description_1),
-                     style = MaterialTheme.typography.bodyLarge,
-                     color = MaterialTheme.colorScheme.onTertiary,
-                     modifier = Modifier
-                         .background(MaterialTheme.colorScheme.tertiary)
-                         .padding(5.dp))
-                Text(text = stringResource(R.string.home_description_2),
-                     style = MaterialTheme.typography.bodyLarge,
-                     color = MaterialTheme.colorScheme.onTertiary,
-                     modifier = Modifier
-                         .background(MaterialTheme.colorScheme.tertiary)
-                         .padding(5.dp))
-                Text(text = stringResource(R.string.home_description_3),
-                     style = MaterialTheme.typography.bodyLarge,
-                     color = MaterialTheme.colorScheme.onTertiary,
-                     modifier = Modifier
-                         .background(MaterialTheme.colorScheme.tertiary)
-                         .padding(5.dp))
-                Text(text = "TODO: SEARCH BAR",
-                     style = MaterialTheme.typography.bodyLarge,
-                     color = MaterialTheme.colorScheme.tertiary,
-                     modifier = Modifier
-                         .fillMaxWidth()
-                         .background(MaterialTheme.colorScheme.onTertiary)
-                         .padding(10.dp))
+                Column(verticalArrangement = Arrangement.Bottom, modifier = Modifier.fillMaxSize()){
+                    Text(text = stringResource(R.string.home_description_1),
+                         style = MaterialTheme.typography.bodyLarge,
+                         color = MaterialTheme.colorScheme.onTertiary,
+                         modifier = Modifier
+                             .background(MaterialTheme.colorScheme.tertiary)
+                             .padding(5.dp))
+                    Text(text = stringResource(R.string.home_description_2),
+                         style = MaterialTheme.typography.bodyLarge,
+                         color = MaterialTheme.colorScheme.onTertiary,
+                         modifier = Modifier
+                             .background(MaterialTheme.colorScheme.tertiary)
+                             .padding(5.dp))
+                    Text(text = stringResource(R.string.home_description_3),
+                         style = MaterialTheme.typography.bodyLarge,
+                         color = MaterialTheme.colorScheme.onTertiary,
+                         modifier = Modifier
+                             .background(MaterialTheme.colorScheme.tertiary)
+                             .padding(5.dp))
+                    Text(text = "TODO: SEARCH BAR",
+                         style = MaterialTheme.typography.bodyLarge,
+                         color = MaterialTheme.colorScheme.tertiary,
+                         modifier = Modifier
+                             .fillMaxWidth()
+                             .background(MaterialTheme.colorScheme.onTertiary)
+                             .padding(10.dp))
+
+                }
 
             }
-
-
-
         }
     }
 }
@@ -105,9 +105,7 @@ fun HomeScreen(menuItems: List<MenuItem>, onProfileOpen: () -> Unit) {
 @Composable
 private fun HomeScreenPreview() {
     LittleLemonTheme {
-        HomeScreen(listOf()) {
-
-        }
+        HomeScreen(listOf())
     }
 }
 
@@ -115,8 +113,6 @@ private fun HomeScreenPreview() {
 @Composable
 private fun HomeScreenPreviewDark() {
     LittleLemonTheme {
-        HomeScreen(listOf()) {
-
-        }
+        HomeScreen(listOf())
     }
 }

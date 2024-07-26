@@ -2,14 +2,17 @@ package org.coursera.littlelemon
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -19,23 +22,23 @@ import org.coursera.littlelemon.feature.home.HomeScreen
 import org.coursera.littlelemon.feature.onboarding.OnboardingScreen
 import org.coursera.littlelemon.feature.profile.ProfileScreen
 import org.coursera.littlelemon.feature.shared.Home
+import org.coursera.littlelemon.feature.shared.LittleLemonAppBar
 import org.coursera.littlelemon.feature.shared.Onboarding
 import org.coursera.littlelemon.feature.shared.Profile
 import org.coursera.littlelemon.feature.shared.User
 import org.coursera.littlelemon.feature.shared.deleteUser
 import org.coursera.littlelemon.feature.shared.fetchUser
 import org.coursera.littlelemon.feature.shared.saveUser
+import org.coursera.littlelemon.ui.theme.LittleLemonTheme
 
 
 @Composable
-fun LittleLemonNavigation(
-    padding: PaddingValues = PaddingValues(),
-    database: LittleLemonDatabase
-) {
+fun LittleLemonNavigation(database: LittleLemonDatabase) {
     val menuItems by database.menuItemDao().getAll().observeAsState(emptyList())
     val navController = rememberNavController()
     val context = LocalContext.current
-
+    var showBackButton by rememberSaveable { mutableStateOf(false) }
+    var showProfileButton by rememberSaveable { mutableStateOf(false) }
     var user: User? by remember {
         mutableStateOf(context.fetchUser())
     }
@@ -46,30 +49,47 @@ fun LittleLemonNavigation(
         Home.route
     }
 
-    NavHost(navController = navController, startDestination = startRoute, modifier = Modifier.padding(padding)) {
-        composable(Onboarding.route) {
-            OnboardingScreen(onUserUpdated = { firstName, lastName, email ->
-                user = context.saveUser(firstName, lastName, email)  // We save the user in shared prefs for future app launches
-                navController.navigate(Home.route, navOptions {
-                    popUpTo(Onboarding.route) {
-                        inclusive = true
-                    }
+    Scaffold(topBar = { LittleLemonAppBar(showBackButton, showProfileButton,
+                                          onProfileClicked = { navController.navigate(Profile.route) },
+                                          onBackClicked = { navController.popBackStack() })
+    }) { innerPadding ->
+        NavHost(navController = navController, startDestination = startRoute, modifier = Modifier.padding(innerPadding)) {
+            composable(Onboarding.route) {
+                OnboardingScreen(onUserUpdated = { firstName, lastName, email ->
+                    user = context.saveUser(firstName, lastName, email)  // We save the user in shared prefs for future app launches
+                    navController.navigate(Home.route, navOptions {
+                        popUpTo(Onboarding.route) {
+                            inclusive = true
+                        }
+                    })
                 })
-            })
-        }
-        composable(Home.route) {
-            HomeScreen(menuItems, onProfileOpen = {
-                navController.navigate(Profile.route)
-            })
-        }
-        composable(Profile.route) {
-            user?.apply {
-                ProfileScreen(this, onLogOut = {
-                    context.deleteUser()
-                    user = null
-                    navController.navigate(Onboarding.route)
-                })
+                showBackButton = Onboarding.showBackButton
+                showProfileButton = Onboarding.showProfileButton
+            }
+            composable(Home.route) {
+                HomeScreen(menuItems)
+                showBackButton = Home.showBackButton
+                showProfileButton = Home.showProfileButton
+            }
+            composable(Profile.route) {
+                user?.apply {
+                    ProfileScreen(this, onLogOut = {
+                        context.deleteUser()
+                        user = null
+                        navController.navigate(Onboarding.route)
+                    })
+                }
+                showBackButton = Profile.showBackButton
+                showProfileButton = Profile.showProfileButton
             }
         }
+    }
+}
+
+@Preview
+@Composable
+private fun LittleLemonNavigationPReview() {
+    LittleLemonTheme {
+        LittleLemonNavigation(database = LittleLemonDatabase.getDatabase(LocalContext.current))
     }
 }
