@@ -21,6 +21,10 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -37,14 +41,21 @@ import kotlin.random.Random
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun FoodMenu(modifier: Modifier = Modifier, menuItems: List<MenuItem>) {
-    val categories = menuItems.map { item -> item.category }
+    var selectedCategory by rememberSaveable { mutableStateOf("") }
+    val categories = menuItems.map { item -> item.category }.distinct()
+    val filteredMenuItems = menuItems.filter { item -> item.category == selectedCategory || selectedCategory.isEmpty() }
+
     LazyColumn(modifier.fillMaxSize()) {
         item {
-            Categories(categories = categories)
+            Categories(categories = categories,
+                       selectedCategory,
+                       onCategorySelected = { newCategory ->
+                           selectedCategory = newCategory
+                       })
             HorizontalDivider()
         }
 
-        items(menuItems) { item ->
+        items(filteredMenuItems) { item ->
             Row(modifier = Modifier
                 .fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween) {
@@ -70,7 +81,7 @@ fun FoodMenu(modifier: Modifier = Modifier, menuItems: List<MenuItem>) {
 }
 
 @Composable
-fun Categories(categories: List<String>) {
+fun Categories(categories: List<String>, selectedCategory: String, onCategorySelected: (String) -> Unit) {
     Column(modifier = Modifier
         .fillMaxWidth()
         .padding(top = 12.dp)) {
@@ -82,8 +93,10 @@ fun Categories(categories: List<String>) {
             items(categories) { category ->
                 FilterChip(
                     modifier = Modifier.padding(horizontal = 8.dp),
-                    selected = false,
-                    onClick = { /*TODO*/ },
+                    selected = category == selectedCategory,
+                    onClick = {
+                        onCategorySelected(if (selectedCategory == category) "" else category)
+                    },
                     label = { Text(text = category) })
             }
         }
