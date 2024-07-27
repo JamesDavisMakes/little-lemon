@@ -1,0 +1,164 @@
+{
+  "menu": [
+    {
+      "id": 1,
+      "title": "Black Tea",
+      "description": "A classic brewed tea with rich flavor.",
+      "price": "2.50",
+      "image": "https://github.com/JamesDavisMakes/little-lemon/blob/main/data/images/black_tea.jpg?raw=true",
+      "category": "Beverage"
+    },
+    {
+      "id": 2,
+      "title": "Boeuf Bourguignon",
+      "description": "Stewed beef with red wine sauce and vegetables.",
+      "price": "18.00",
+      "image": "https://github.com/JamesDavisMakes/little-lemon/blob/main/data/images/boeuf_bourguignon.webp?raw=true",
+      "category": "Mains"
+    },
+    {
+      "id": 3,
+      "title": "Bouillabaisse",
+      "description": "Provençal fish stew with herbs and spices.",
+      "price": "22.00",
+      "image": "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/bouillabaisse.jpeg?raw=true",
+      "category": "Mains"
+    },
+    {
+      "id": 4,
+      "title": "Cappuccino",
+      "description": "Espresso with steamed milk and foam.",
+      "price": "3.50",
+      "image": "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/cappuccino.jpg?raw=true",
+      "category": "Beverage"
+    },
+    {
+      "id": 5,
+      "title": "Croissant",
+      "description": "Flaky pastry with buttery layers.",
+      "price": "2.00",
+      "image": "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/croissant.webp?raw=true",
+      "category": "Bakery"
+    },
+    {
+      "id": 6,
+      "title": "Custard Tart",
+      "description": "Creamy tart with a buttery crust.",
+      "price": "4.00",
+      "image": "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/custard_tart.jpg?raw=true",
+      "category": "Dessert"
+    },
+    {
+      "id": 7,
+      "title": "Espresso",
+      "description": "Strong brewed coffee served in small shots.",
+      "price": "2.00",
+      "image": "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/espresso.jpg?raw=true",
+      "category": "Beverage"
+    },
+    {
+      "id": 8,
+      "title": "Green Tea",
+      "description": "Light and refreshing brewed green tea.",
+      "price": "2.50",
+      "image": "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/green_tea.jpg?raw=true",
+      "category": "Beverage"
+    },
+    {
+      "id": 9,
+      "title": "Lasagna",
+      "description": "Layers of pasta, meat, and cheese baked together.",
+      "price": "15.00",
+      "image": "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/lasagna.jpeg?raw=true",
+      "category": "Mains"
+    },
+    {
+      "id": 10,
+      "title": "Latte",
+      "description": "Espresso with steamed milk and light foam.",
+      "price": "3.50",
+      "image": "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/latte.jpg?raw=true",
+      "category": "Beverage"
+    },
+    {
+      "id": 11,
+      "title": "Mocha",
+      "description": "Chocolate-flavored coffee with steamed milk.",
+      "price": "4.00",
+      "image": "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/mocha.jpg?raw=true",
+      "category": "Beverage"
+    },
+    {
+      "id": 12,
+      "title": "Onion Soup",
+      "description": "Rich broth topped with melted cheese.",
+      "price": "6.00",
+      "image": "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/onion_soup.jpeg?raw=true",
+      "category": "Appetizer"
+    },
+    {
+      "id": 13,
+      "title": "Quiche Lorraine",
+      "description": "Savory tart filled with eggs, cream, and bacon.",
+      "price": "8.00",
+      "image": "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/quiche_lorraine.jpeg?raw=true",
+      "category": "Mains"
+    },
+    {
+      "id": 14,
+      "title": "Salmon en Papillote",
+      "description": "Baked salmon with herbs in parchment paper.",
+      "price": "20.00",
+      "image": "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/salmon_en_papillote.jpeg?raw=true",
+      "category": "Mains"
+    },
+    {
+      "id": 15,
+      "title": "Pasta",
+      "description": "Classic Italian dish with various sauces.",
+      "price": "12.00",
+      "image": "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/pasta.jpg?raw=true",
+      "category": "Mains"
+    },
+    {
+      "id": 16,
+      "title": "Salmon Rice Bowl",
+      "description": "Grilled salmon served over rice with veggies.",
+      "price": "14.00",
+      "image": "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/salmonricebowl.jpg?raw=true",
+      "category": "Mains"
+    },
+    {
+      "id": 17,
+      "title": "Grilled Fish",
+      "description": "Fresh fish grilled to perfection.",
+      "price": "18.00",
+      "image": "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/grilledfish.jpg?raw=true",
+      "category": "Mains"
+    },
+    {
+      "id": 18,
+      "title": "Lemon Dessert",
+      "description": "Tangy and sweet lemon-flavored treat.",
+      "price": "5.00",
+      "image": "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/lemondessert.jpg?raw=true",
+      "category": "Dessert"
+    },
+    {
+      "id": 19,
+      "title": "Greek Salad",
+      "description": "Fresh vegetables, olives, and feta cheese.",
+      "price": "7.00",
+      "image": "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/greeksalad.jpg?raw=true",
+      "category": "Appetizer"
+    },
+    {
+      "id": 20,
+      "title": "Bruschetta",
+      "description": "Toasted bread topped with tomatoes and basil.",
+      "price": "6.00",
+      "image": "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/bruschetta.jpg?raw=true",
+      "category": "Appetizer"
+    }
+  ]
+}
