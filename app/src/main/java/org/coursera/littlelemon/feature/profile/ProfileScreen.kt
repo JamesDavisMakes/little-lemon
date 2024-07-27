@@ -4,6 +4,7 @@ package org.coursera.littlelemon.feature.profile
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -36,53 +37,29 @@ import org.coursera.littlelemon.ui.theme.LittleLemonTheme
 
 @Composable
 fun ProfileScreen(user: User, onLogOut: () -> Unit) {
-    Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-        val logoRes = if (isSystemInDarkTheme()) {
-            R.drawable.branding_logo_horizontal_text_transparent_dark
-        } else {
-            R.drawable.branding_logo_horizontal_text_transparent
+    Column(modifier = Modifier.fillMaxSize().padding(horizontal = 20.dp, vertical = 35.dp),
+           horizontalAlignment = Alignment.CenterHorizontally,
+           verticalArrangement = Arrangement.Center) {
+        Text(text = stringResource(id = R.string.profile_form_title),
+             textAlign = TextAlign.Start,
+             style = MaterialTheme.typography.titleLarge,
+             modifier = Modifier.fillMaxWidth()
+        )
+        Row(verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth().padding(top = 20.dp)) {
+            Text(text = "Name: ", fontWeight = FontWeight.Bold)
+            Text(text = "${user.firstName.toProperName()} ${user.lastName.toProperName()}")
         }
 
-        // Empty as a placeholder to match onboarding
-        Image(painter = painterResource(id = logoRes),
-              contentDescription = stringResource(R.string.description_logo),
-              modifier = Modifier
-                  .fillMaxWidth(0.6f)
-                  .padding(30.dp)
-        )
-        Text(text = "",
-             style = MaterialTheme.typography.headlineMedium,
-             modifier = Modifier
-                 .fillMaxWidth()
-                 .padding(50.dp)
-        )
+        Row(verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth().padding(top = 20.dp)) {
+            Text(text = "Email: ", fontWeight = FontWeight.Bold)
+            Text(text = user.email)
+        }
 
-        Column(horizontalAlignment = Alignment.CenterHorizontally,
-               modifier = Modifier
-                   .fillMaxSize(1f)
-                   .padding(horizontal = 20.dp, vertical = 35.dp)
-        ) {
-            Text(text = stringResource(id = R.string.profile_form_title),
-                 textAlign = TextAlign.Start,
-                 style = MaterialTheme.typography.titleLarge,
-                 modifier = Modifier.fillMaxWidth()
-            )
-            Row(verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth().padding(top = 20.dp)) {
-                Text(text = "Name: ", fontWeight = FontWeight.Bold)
-                Text(text = "${user.firstName.toProperName()} ${user.lastName.toProperName()}")
-            }
-
-            Row(verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth().padding(top = 20.dp)) {
-                Text(text = "Email: ", fontWeight = FontWeight.Bold)
-                Text(text = user.email)
-            }
-
-            Button(onClick = { onLogOut() },
-                   modifier = Modifier.padding(20.dp)) {
-                Text(text = stringResource(R.string.profile_button_logout))
-            }
+        Button(onClick = { onLogOut() },
+               modifier = Modifier.padding(20.dp)) {
+            Text(text = stringResource(R.string.profile_button_logout))
         }
     }
 }
