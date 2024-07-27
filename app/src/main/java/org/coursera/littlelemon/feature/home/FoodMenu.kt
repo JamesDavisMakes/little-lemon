@@ -57,12 +57,17 @@ fun FoodMenu(modifier: Modifier = Modifier, menuItems: List<MenuItem>) {
                 Column(modifier = Modifier
                     .fillMaxWidth(0.7f)
                     .padding(12.dp),) {
-                    Text(text = item.title, style = MaterialTheme.typography.titleMedium)
+                    Text(text = item.title,
+                         style = MaterialTheme.typography.titleMedium,
+                         fontWeight = FontWeight.Bold)
                     Text(text = item.description,
                          style = MaterialTheme.typography.bodyMedium,
+                         color = MaterialTheme.colorScheme.onBackground,
                          maxLines = 2,
                          overflow = TextOverflow.Ellipsis)
-                    Text(text = "$${item.price}", style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Bold)
+                    Text(text = "$${item.price}",
+                         style = MaterialTheme.typography.bodyLarge,
+                         color = MaterialTheme.colorScheme.onBackground)
                 }
                 GlideImage(modifier = Modifier
                     .height(120.dp)
