@@ -2,7 +2,6 @@ package org.coursera.littlelemon.feature.onboarding
 
 import android.annotation.SuppressLint
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
@@ -14,7 +13,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -23,7 +21,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -32,26 +29,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.coursera.littlelemon.R
 import org.coursera.littlelemon.feature.shared.isValidUser
-import org.coursera.littlelemon.ui.theme.LittleLemonFieldDefaults
+import org.coursera.littlelemon.ui.theme.littleLemonFieldDefaults
 import org.coursera.littlelemon.ui.theme.LittleLemonTheme
 
 @Composable
-fun OnboardingScreen(
-    modifier: Modifier = Modifier,
-    onUserUpdated: (firstName: String, lastName: String, email: String) -> Unit
-) {
+fun OnboardingScreen(onUserUpdated: (firstName: String, lastName: String, email: String) -> Unit) {
     var firstName by rememberSaveable { mutableStateOf("") }
     var lastName by rememberSaveable { mutableStateOf("") }
     var email by rememberSaveable { mutableStateOf("") }
     var buttonEnabled by rememberSaveable { mutableStateOf(isValidUser(firstName, lastName, email)) }
 
     Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-        val logoRes = if (isSystemInDarkTheme()) {
-            R.drawable.branding_logo_horizontal_text_transparent_dark
-        } else {
-            R.drawable.branding_logo_horizontal_text_transparent
-        }
-
         Text(text = stringResource(R.string.onboarding_header),
              textAlign = TextAlign.Center,
              style = MaterialTheme.typography.headlineMedium,
@@ -78,7 +66,7 @@ fun OnboardingScreen(
                               modifier = Modifier
                                   .fillMaxWidth()
                                   .padding(top = 20.dp),
-                              colors = OutlinedTextFieldDefaults.LittleLemonFieldDefaults(),
+                              colors = OutlinedTextFieldDefaults.littleLemonFieldDefaults(),
                               keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
                               onValueChange = {
                                   firstName = it
@@ -90,7 +78,7 @@ fun OnboardingScreen(
                               modifier = Modifier
                                   .fillMaxWidth()
                                   .padding(top = 10.dp),
-                              colors = OutlinedTextFieldDefaults.LittleLemonFieldDefaults(),
+                              colors = OutlinedTextFieldDefaults.littleLemonFieldDefaults(),
                               keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
                               onValueChange = {
                                   lastName = it
@@ -102,7 +90,7 @@ fun OnboardingScreen(
                               modifier = Modifier
                                   .fillMaxWidth()
                                   .padding(top = 10.dp),
-                              colors = OutlinedTextFieldDefaults.LittleLemonFieldDefaults(),
+                              colors = OutlinedTextFieldDefaults.littleLemonFieldDefaults(),
                               keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email,
                                                                 imeAction = ImeAction.Done),
                               onValueChange = {

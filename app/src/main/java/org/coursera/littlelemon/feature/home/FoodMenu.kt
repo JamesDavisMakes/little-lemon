@@ -1,9 +1,6 @@
 package org.coursera.littlelemon.feature.home
 
-import android.content.res.Configuration
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -15,7 +12,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Button
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
@@ -26,7 +22,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -36,7 +31,7 @@ import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
 import com.bumptech.glide.integration.compose.GlideImage
 import org.coursera.littlelemon.data.menu.MenuItem
 import org.coursera.littlelemon.ui.theme.LittleLemonTheme
-import kotlin.random.Random
+import org.coursera.littlelemon.ui.theme.previewMenuItems
 
 @OptIn(ExperimentalGlideComposeApi::class)
 @Composable
@@ -103,85 +98,18 @@ fun Categories(categories: List<String>, selectedCategory: String, onCategorySel
     }
 }
 
-@Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)
+@Preview(showBackground = true)
 @Composable
 private fun FoodMenuPreview() {
     LittleLemonTheme {
-        FoodMenu(
-            menuItems = listOf(
-                MenuItem(
-                    1,
-                    "Title",
-                    "A lengthy description",
-                    "9.99",
-                    "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/grilledFish.jpg?raw=true",
-                    "Coffee"
-                ),
-                MenuItem(
-                    1,
-                    "Title",
-                    "A lengthy description",
-                    "9.99",
-                    "",
-                    "Coffee"
-                ),
-                MenuItem(
-                    1,
-                    "Title",
-                    "A lengthy description",
-                    "9.99",
-                    "",
-                    "American"
-                ),
-                MenuItem(
-                    1,
-                    "Title",
-                    "A lengthy description",
-                    "9.99",
-                    "",
-                    "American"
-                ),
-                MenuItem(
-                    1,
-                    "Title",
-                    "A lengthy description",
-                    "9.99",
-                    "",
-                    "Indian"
-                ),
-                MenuItem(
-                    1,
-                    "Title",
-                    "A lengthy description",
-                    "9.99",
-                    "",
-                    "Chinese"
-                ),
-                MenuItem(
-                    1,
-                    "Title",
-                    "A lengthy description",
-                    "9.99",
-                    "",
-                    "Chinese"
-                ),
-                MenuItem(
-                    1,
-                    "Title",
-                    "A lengthy description",
-                    "9.99",
-                    "",
-                    "Dessert"
-                ),
-                MenuItem(
-                    1,
-                    "Title",
-                    "A lengthy description",
-                    "9.99",
-                    "",
-                    "Dessert"
-                ),
-            )
-        )
+        FoodMenu(menuItems = previewMenuItems)
+    }
+}
+
+@Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)
+@Composable
+private fun FoodMenuPreviewDark() {
+    LittleLemonTheme {
+        FoodMenu(menuItems = previewMenuItems)
     }
 }
