@@ -1,5 +1,7 @@
 [versions]
 agp = "8.5.1"
+compose = "1.0.0"
+composeVersion = "1.0.0-beta01"
 kotlin = "2.0.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -21,6 +23,8 @@ runtimeLivedata = "1.6.8"
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomCompilerVersion" }
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomCompilerVersion" }
+compose = { module = "com.github.bumptech.glide:compose", version.ref = "compose" }
+compose-v100beta01 = { module = "com.github.bumptech.glide:compose", version.ref = "composeVersion" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }

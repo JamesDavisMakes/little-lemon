@@ -1,11 +1,9 @@
 package org.coursera.littlelemon
 
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -34,7 +32,6 @@ import org.coursera.littlelemon.ui.theme.LittleLemonTheme
 
 @Composable
 fun LittleLemonNavigation(database: LittleLemonDatabase) {
-    val menuItems by database.menuItemDao().getAll().observeAsState(emptyList())
     val navController = rememberNavController()
     val context = LocalContext.current
     var showBackButton by rememberSaveable { mutableStateOf(false) }
@@ -67,7 +64,7 @@ fun LittleLemonNavigation(database: LittleLemonDatabase) {
                 showProfileButton = Onboarding.showProfileButton
             }
             composable(Home.route) {
-                HomeScreen(menuItems)
+                HomeScreen(database)
                 showBackButton = Home.showBackButton
                 showProfileButton = Home.showProfileButton
             }
@@ -88,7 +85,7 @@ fun LittleLemonNavigation(database: LittleLemonDatabase) {
 
 @Preview
 @Composable
-private fun LittleLemonNavigationPReview() {
+private fun LittleLemonNavigationPreview() {
     LittleLemonTheme {
         LittleLemonNavigation(database = LittleLemonDatabase.getDatabase(LocalContext.current))
     }
